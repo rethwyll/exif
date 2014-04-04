@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" ng-app="exif">
+<head>
+  <meta charset="utf-8">
+  <title>EXIF</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= csrf_meta_tags %>  
+</head>
+<body>
+  <section class="map" ng-controller="MapCtrl">
+    <ul>
+      <li class="place" ng-repeat="place in placelist | orderBy:sort">
+          <a ng-href="#" ng-click="setCurrentPlace(place[4])">
+          <span>{{place[5]}}</span>
+          <span>Latitude: {{place[0]}}</span>
+          <span>Longitude: {{place[1]}}</span>
+          </a>
+      </li>
+    </ul>
+  </section> 
+
+  <section class="exif-data">
+    <input id="time" type="range" min="0" max="24" ng-model="time">
+    <label for="time">{{time}}</span>
+
+    <header class="place" ng-controller="PlaceCtrl">
+      <h2>Place: {{title}}</h2>
+      <ul>
+        <li>Latitude: {{lat}}</li>
+        <li>Longitude: {{lon}}</li>
+      </ul>
+    </header>
+
+    <section class="exif-list" ng-controller="ExifCtrl">
+      <ul>
+        <li ng-repeat="exifobj in exiflist">
+          <ul>
+            <li ng-repeat="item in exifobj.items">
+              <p>{{item.tag}}: {{item.raw._content}}</p>
+            </li>            
+          </ul>       
+        </li>            
+      </ul>
+    </section>
+  </section>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+  <%= javascript_include_tag "application" %>  
+</body>
+</html>
+
