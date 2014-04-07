@@ -1,6 +1,8 @@
 Exif::Application.routes.draw do
   root 'map#index'
   resources :place, :format => 'json'
+  get '/coords', to: 'place#coords', :format => 'json'
+
   resources :photo
   resources :exif_attribute
 

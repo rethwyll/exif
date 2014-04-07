@@ -46,7 +46,7 @@ gem 'unicorn'
 
 # gem 'sidekiq'
 # gem 'sidetiq'
-gem 'flickraw'
+gem 'flickraw-cached'
 gem 'nokogiri'
 gem 'faraday'
 

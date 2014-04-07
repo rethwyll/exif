@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406183659) do
+ActiveRecord::Schema.define(version: 20140407033508) do
 
   create_table "exif_attributes", force: true do |t|
     t.string   "title"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140406183659) do
     t.string   "short_description"
     t.string   "image_url"
     t.string   "states"
+    t.string   "unique_number"
   end
 
 end
