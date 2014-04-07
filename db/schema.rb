@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404045320) do
+ActiveRecord::Schema.define(version: 20140406183659) do
 
   create_table "exif_attributes", force: true do |t|
     t.string   "title"
@@ -33,15 +33,19 @@ ActiveRecord::Schema.define(version: 20140404045320) do
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "photo_timestamp"
   end
 
   create_table "places", force: true do |t|
-    t.string   "title"
     t.string   "latitude"
     t.string   "longitude"
     t.integer  "map_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "site"
+    t.string   "short_description"
+    t.string   "image_url"
+    t.string   "states"
   end
 
 end

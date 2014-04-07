@@ -18,17 +18,17 @@ var CONSTANTS = {
 angular.module('exif.controllers', []). 
   controller('MapCtrl', ['$rootScope','$scope','$http','CurrentPlaceService',function($rootScope,$scope,$http,CurrentPlaceService){
     $scope.placelist = [];
-    $http.get('http://localhost:3000/assets/whc.json').then(
+    $http.get('http://localhost:3000/place').then(
       function (r) { 
-        $scope.placelist = r.data.QUERYRESULT.DATA.slice(0,15);
+        $scope.placelist = r.data.slice(0,15);
       },
       function(r,s){    
         $scope.placelist = [];      
       }
     );
-    $scope.sort = "+[5]";
+    $scope.sort = "+site";
     $scope.setCurrentPlace = function(id){
-      CurrentPlaceService.set( ($scope.placelist.filter(function(v) { return v[4] === id }))[0] );
+      CurrentPlaceService.set( ($scope.placelist.filter(function(v) { return v.id === id }))[0] );
       $rootScope.$broadcast('selectCurrentPlace'); 
     };
   }]).
@@ -36,9 +36,9 @@ angular.module('exif.controllers', []).
     $scope.$on('selectCurrentPlace', function(){
       var currentPlace = CurrentPlaceService.get();
       if (currentPlace) {
-        $scope.title = currentPlace[5];
-        $scope.lat = currentPlace[0];
-        $scope.lon = currentPlace[1];
+        $scope.title = currentPlace.site;
+        $scope.lat = currentPlace.latitude;
+        $scope.lon = currentPlace.longitude;
       }      
       $rootScope.$broadcast('getPlacePhotos');
     });
@@ -50,7 +50,7 @@ angular.module('exif.controllers', []).
       $scope.exiflist_g = [];
       $scope.photolist = [];  
  
-      var photoUrl = flickrUrl({ method: 'flickr.photos.search', lat: currentPlace[0], lon: currentPlace[1] });
+      var photoUrl = flickrUrl({ method: 'flickr.photos.search', lat: currentPlace.latitude, lon: currentPlace.longitude });
       $http.get(photoUrl).then(
         function (r) { 
           $scope.photolist = r.data.photos.photo.slice(0,10);     

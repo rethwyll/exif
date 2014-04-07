@@ -1,6 +1,6 @@
 Exif::Application.routes.draw do
   root 'map#index'
-  resources :place
+  resources :place, :format => 'json'
   resources :photo
   resources :exif_attribute
 

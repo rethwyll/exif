@@ -43,3 +43,11 @@ gem 'unicorn'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# gem 'sidekiq'
+# gem 'sidetiq'
+gem 'flickraw'
+gem 'nokogiri'
+gem 'faraday'
+
+

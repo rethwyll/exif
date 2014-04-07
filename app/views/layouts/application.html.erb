@@ -10,10 +10,10 @@
   <section class="map" ng-controller="MapCtrl">
     <ul>
       <li class="place" ng-repeat="place in placelist | orderBy:sort">
-          <a ng-href="#" ng-click="setCurrentPlace(place[4])">
-          <span>{{place[5]}}</span>
-          <span>Latitude: {{place[0]}}</span>
-          <span>Longitude: {{place[1]}}</span>
+          <a ng-href="#" ng-click="setCurrentPlace(place.id)">
+          <span>{{place.site}}</span>
+          <span>Latitude: {{place.latitude}}</span>
+          <span>Longitude: {{place.longitude}}</span>
           </a>
       </li>
     </ul>
