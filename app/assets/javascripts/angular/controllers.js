@@ -20,7 +20,7 @@ angular.module('exif.controllers', []).
     $scope.placelist = [];
     $http.get('http://localhost:3000/place').then(
       function (r) { 
-        $scope.placelist = r.data.slice(0,15);
+        $scope.placelist = r.data;
       },
       function(r,s){    
         $scope.placelist = [];      
