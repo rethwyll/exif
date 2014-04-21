@@ -3,8 +3,11 @@ Exif::Application.routes.draw do
   resources :place, :format => 'json'
   get '/coords', to: 'place#coords', :format => 'json'
 
-  resources :photo
-  resources :exif_attribute
+  resources :photo, :format => 'json'
+  resources :exif_attribute, :format => 'json'
+  get '/exif_attributes', to: 'exif_attribute#exif_attributes', :format => 'json'
+  get '/:place_id/fnumber', to: 'exif_attribute#fnumber', :format => 'json'
+  get '/:place_id/exposuretime', to: 'exif_attribute#exposuretime', :format => 'json'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

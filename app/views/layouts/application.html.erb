@@ -4,7 +4,13 @@
   <meta charset="utf-8">
   <title>EXIF</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= csrf_meta_tags %>  
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
+  window.exif = {
+    attributes: <%= raw exif_attributes.to_json %>
+    places: {}
+  }
+  </script>  
 </head>
 <body>
   <section class="map" ng-controller="MapCtrl">
@@ -33,12 +39,8 @@
 
     <section class="exif-list" ng-controller="ExifCtrl">
       <ul>
-        <li ng-repeat="exifobj in exiflist">
-          <ul>
-            <li ng-repeat="item in exifobj.items">
-              <p>{{item.tag}}: {{item.raw._content}}</p>
-            </li>            
-          </ul>       
+        <li ng-repeat="viz in exiflist">
+                
         </li>            
       </ul>
     </section>
